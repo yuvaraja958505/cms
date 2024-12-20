@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Leave Notice</title>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="student_leave.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+/* General Table Styling */
+.page-content {
+    text-align: center;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.table thead tr {
+    background-color: #5d9cec;
+    color: white;
+    text-align: left;
+}
+
+.table th, .table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling */
+button {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.approve-btn {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.approve-btn:hover {
+    background-color: #218838; /* Darker green */
+    color: white;
+}
+
+.reject-btn {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+.reject-btn:hover {
+    background-color: #c82333; /* Darker red */
+    color: white;
+}
+
+/* Status Styling */
+.status {
+    font-weight: bold;
+}
+
+.status.approved {
+    color: #28a745; /* Green for approved status */
+}
+
+.status.rejected {
+    color: #dc3545; /* Red for rejected status */
+}
+    </style>
+</head>
+<body>
+     <!-- Sidebar -->
+     <div class="sidebar">
+        <h2>COLLEGE NAME</h2>
+        <ul>
+            <li><a href="admin.html" ><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="managestaff.html"><i class="fas fa-users"></i> Manage Staff</a></li>
+            <li><a href="addstaff.html"><i class="fas fa-user-plus"></i> Add Staff</a></li>
+            <li><a href="m_student.html"><i class="fas fa-user-friends"></i> Manage Student</a></li>
+            <li><a href="student.html"><i class="fas fa-user-plus"></i> Add Student</a></li>
+            <li><a href="managecourse.html"><i class="fas fa-book"></i> Manage Course</a></li>
+            <li><a href="course.html"><i class="fas fa-plus-square"></i> Add Course</a></li>
+            <li><a href="m_subject.html"><i class="fas fa-book-open"></i> Manage Subject</a></li>
+            <li><a href="add_subject.html"><i class="fas fa-plus-square"></i> Add Subject</a></li>
+            <li><a href="session.html"><i class="fas fa-calendar"></i> Manage Session</a></li>
+            <li><a href="add_session.html"><i class="fas fa-calendar-plus"></i> Add Session</a></li>
+            <li><a href="Attendance_Tracker.html"><i class="fas fa-eye"></i> Take Attendance </a></li>
+            <li><a href="attendance.html"><i class="fas fa-eye"></i> View Attendance</a></li>
+            <li><a href="fees_details.html"><i class="fas fa-coins"></i> Fees</a></li>
+            <li><a href="student_leave.html" class="active"><i class="fas fa-calendar-check"></i> Student Leave</a></li>
+            <li><a href="staff_leave.html"><i class="fas fa-calendar-times"></i> Staff Leave</a></li>
+            <li><a href="student_feedback.html"><i class="fas fa-comments"></i> Student Feedback</a></li>
+            <li><a href="staff_feedback.html"><i class="fas fa-comments"></i> Staff Feedback</a></li>
+        </ul>
+        <!-- Logout Button -->
+        <button class="logout-btn" onclick="window.location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+         <!-- Header Section -->
+         <div class="header">
+            <h2 class="admin_name">WELCOME Yuvaraja</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+
+
+
+
+    <!-- Student Leave Notice List -->
+    <div id="studentLeaveList" class="page-content">
+        <h2>Student Leave Notices</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Department</th>
+                    <th>Reason</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Yuvaraja</td>
+                    <td>Computer Science</td>
+                    <td>Medical Leave</td>
+                    <td>2024-01-10</td>
+                    <td>2024-01-15</td>
+                    <td class="status">Pending</td>
+                    <td>
+                        <button class="approve-btn">Approve</button>
+                        <button class="reject-btn">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ajai</td>
+                    <td>Electrical Engineering</td>
+                    <td>Family Emergency</td>
+                    <td>2024-01-12</td>
+                    <td>2024-01-18</td>
+                    <td class="status">Pending</td>
+                    <td>
+                        <button class="approve-btn">Approve</button>
+                        <button class="reject-btn">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>akshya</td>
+                    <td>Electrical Engineering</td>
+                    <td>Family Emergency</td>
+                    <td>2024-03-10</td>
+                    <td>2024-03-28</td>
+                    <td class="status">Pending</td>
+                    <td>
+                        <button class="approve-btn">Approve</button>
+                        <button class="reject-btn">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="student_leave.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Add event listener for the entire table
+            const tableBody = document.querySelector(".table tbody");
+
+            tableBody.addEventListener("click", (event) => {
+                const target = event.target;
+
+                // Check if Approve button is clicked
+                if (target.classList.contains("approve-btn")) {
+                    const row = target.closest("tr");
+                    const statusCell = row.querySelector(".status");
+                    statusCell.textContent = "Approved";
+                    statusCell.className = "status approved"; // Add approved class
+                }
+
+                // Check if Reject button is clicked
+                if (target.classList.contains("reject-btn")) {
+                    const row = target.closest("tr");
+                    const statusCell = row.querySelector(".status");
+                    statusCell.textContent = "Rejected";
+                    statusCell.className = "status rejected"; // Add rejected class
+                }
+            });
+        });
+    </script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const tableBody = document.querySelector("#studentLeaveList .table tbody");
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management Dashboard</title>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <style>
+        /* Container styling */
+#addStudentForm {
+    /* max-width: 600px; */
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading Styling */
+#addStudentForm h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label Styling */
+.form-group label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Input Fields and Select Dropdown */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Adjusting for mobile devices */
+@media (max-width: 600px) {
+    #addStaffForm {
+        padding: 15px;
+    }
+    .form-group label {
+        font-size: 14px;
+    }
+    .form-control {
+        font-size: 12px;
+    }
+    .btn-submit {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensures padding is inside the element */
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for form inputs */
+.form-control:focus {
+    border-color: #3498db; /* Blue border when focused */
+    outline: none; /* Removes default outline */
+}
+
+/* Styling for the submit button */
+.btn-submit {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Styling for select dropdowns */
+.form-control[type="select"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+    color: #888; /* Light grey color for placeholders */
+    font-style: italic;
+}
+
+/* Adding margin to form-group for better spacing */
+.form-group {
+    margin-bottom: 20px; /* Spacing between form elements */
+}
+
+.container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .form-header {
+            /* background-color: #6a1b9a; */
+            color: #000000;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            
+            border-radius: 5px 5px 0 0;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            flex: 1 1 calc(50% - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px auto;
+        }
+
+        button:hover {
+            background-color: #4a148c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>COLLEGE NAME</h2>
+        <ul>
+            <li><a href="admin.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="managestaff.html"><i class="fas fa-users"></i> Manage Staff</a></li>
+            <li><a href="addstaff.html"><i class="fas fa-user-plus"></i> Add Staff</a></li>
+            <li><a href="m_student.html"><i class="fas fa-user-friends"></i> Manage Student</a></li>
+            <li><a href="student.html" class="active"><i class="fas fa-user-plus"></i> Add Student</a></li>
+            <li><a href="managecourse.html"><i class="fas fa-book"></i> Manage Course</a></li>
+            <li><a href="course.html"><i class="fas fa-plus-square"></i> Add Course</a></li>
+            <li><a href="m_subject.html"><i class="fas fa-book-open"></i> Manage Subject</a></li>
+            <li><a href="add_subject.html"><i class="fas fa-plus-square"></i> Add Subject</a></li>
+            <li><a href="session.html"><i class="fas fa-calendar"></i> Manage Session</a></li>
+            <li><a href="add_session.html"><i class="fas fa-calendar-plus"></i> Add Session</a></li>
+            <li><a href="Attendance_Tracker.html"><i class="fas fa-eye"></i> Take Attendance </a></li>
+            <li><a href="attendance.html"><i class="fas fa-eye"></i> View Attendance</a></li>
+            <li><a href="fees_details.html"><i class="fas fa-coins"></i> Fees</a></li>
+            <li><a href="student_leave.html"><i class="fas fa-calendar-check"></i> Student Leave</a></li>
+            <li><a href="staff_leave.html"><i class="fas fa-calendar-times"></i> Staff Leave</a></li>
+            <li><a href="student_feedback.html"><i class="fas fa-comments"></i> Student Feedback</a></li>
+            <li><a href="staff_feedback.html"><i class="fas fa-comments"></i> Staff Feedback</a></li>
+        </ul>
+        <!-- Logout Button -->
+        <button class="logout-btn" onclick="window.location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+         <!-- Header Section -->
+         <div class="header">
+            <h2 class="admin_name">WELCOME Yuvaraja</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+
+    
+       <!-- Add Student Form -->
+       <div class="container">
+        <div class="form-header">
+            Student Registration Form
+        </div>
+        <form>
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" placeholder="Enter Full Name" required>
+            </div>
+
+            <!-- Username -->
+            <!-- <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div> -->
+
+            <!-- E-mail -->
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Enter Email Address" required>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+
+            <!-- Address -->
+            
+
+            <!-- Contact -->
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="tel" id="contact" placeholder="Enter Contact Number" required>
+            </div>
+
+            <!-- Class -->
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select id="class" required>
+                    <option value="">Select Class</option>
+                    <option value="1">Class 1</option>
+                    <option value="2">Class 2</option>
+                    <option value="3">Class 3</option>
+                    <option value="4">Class 4</option>
+                </select>
+            </div>
+
+            <!-- Section -->
+            <div class="form-group">
+                <label for="section">Section</label>
+                <input type="text" id="section" placeholder="Enter Section">
+            </div>
+
+            <!-- Roll -->
+            <div class="form-group">
+                <label for="roll">Roll Number</label>
+                <input type="number" id="roll" placeholder="Enter Roll Number">
+            </div>
+
+            <!-- Parent -->
+            <div class="form-group">
+                <label for="parent">Parent</label>
+                <select id="parent">
+                    <option value="">Select Parent</option>
+                    <option value="parent1">Parent 1</option>
+                    <option value="parent2">Parent 2</option>
+                </select>
+            </div>
+
+            <!-- Transport -->
+            <div class="form-group">
+                <label for="transport">Transport</label>
+                <select id="transport">
+                    <option value="">Select Transport</option>
+                    <option value="bus">School Bus</option>
+                    <option value="car">Private</option>
+                </select>
+            </div>
+
+            <!-- Hostel -->
+            <div class="form-group">
+                <label for="hostel">Hostel</label>
+                <select id="hostel">
+                    <option value="">Select Hostel Room</option>
+                    <option value="room1">Room 1</option>
+                    <option value="room2">Room 2</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="number" id="contact" placeholder="Enter Contact Number">
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group full-width">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input type="radio" name="gender" value="Female" required> Female</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="joiningDate">Joining Date</label>
+                <input type="date" class="form-control" id="joiningDate" name="joiningDate" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="address">Address</label>
+                <textarea id="address" rows="3" placeholder="Enter Address"></textarea>
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="form-group full-width">
+                <label for="profile_pic">Profile Picture</label>
+                <input type="file" id="profile_pic" accept="image/*">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+    
+
+    </div>
+     <!-- Custom Popup Window -->
+     <div class="modal-overlay" id="customModal" style="display: none;">
+        <div class="modal-content">
+            <h4>Confirm Submission</h4>
+            <p>Are you sure you want to submit the student details?</p>
+            <div class="modal-buttons">
+                <button class="btn-confirm" onclick="submitForm()">Confirm</button>
+                <button class="btn-cancel" onclick="closePopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="stu.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Student Dashboard</h4>
+        <a href="#" onclick="showContent('home')" class="menu-link active"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="showContent('attendance')" class="menu-link"><i class="fas fa-clipboard-list"></i> View Attendance</a>
+        <a href="#" onclick="showContent('result')" class="menu-link"><i class="fas fa-poll"></i> View Result</a>
+        <a href="#" onclick="showContent('fees')" class="menu-link"><i class="fas fa-money-bill-wave"></i> Fees Payment</a>
+        <a href="#" onclick="showContent('leave')" class="menu-link"><i class="fas fa-calendar-plus"></i> Apply Leave</a>
+        <a href="#" onclick="showContent('feedback')" class="menu-link"><i class="fas fa-comment-alt"></i> Send Feedback</a>
+    </div>
+
+    <!-- Toggle Sidebar Button for Small Screens -->
+    <button class="btn btn-primary d-md-none mb-3" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Home Content -->
+        <div id="home" class="page-content">
+            <h2>Welcome to the Student Dashboard</h2>
+            <!-- <p>Navigate through the sidebar to access your details.</p> -->
+            <div class="container-fluid">
+                <!-- Row for Summary Cards -->
+                <div class="row mx-0">
+                    <!-- Total Attendance -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="stats-card card-blue">
+                            <i class="fas fa-user-check"></i>
+                            <h3>0</h3>
+                            <h5>Total Attendance</h5>
+                        </div>
+                    </div>
+                    <!-- Absent -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="stats-card card-green">
+                            <i class="fas fa-user-times"></i>
+                            <h3>0</h3>
+                            <h5>Absent</h5>
+                        </div>
+                    </div>
+                    <!-- Present -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="stats-card card-yellow">
+                            <i class="fas fa-user-check"></i>
+                            <h3>0</h3>
+                            <h5>Present</h5>
+                        </div>
+                    </div>
+                    <!-- Total Subjects -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="stats-card card-red">
+                            <i class="fas fa-book-open"></i>
+                            <h3>0</h3>
+                            <h5>Total Subjects</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Attendance -->
+        <div id="attendance" class="page-content hidden">
+            <h2>View Attendance</h2>
+            <p>Here is your attendance data:</p>
+            <!-- Example table for Attendance -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Classes Attended</th>
+                        <th>Classes Missed</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Math</td>
+                        <td>20</td>
+                        <td>2</td>
+                        <td>90%</td>
+                    </tr>
+                    <tr>
+                        <td>Science</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>82%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- View Results -->
+        <div id="result" class="page-content hidden">
+            <h2>View Results</h2>
+            <p>Your results will be displayed here:</p>
+            <!-- Example table for Results -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks Obtained</th>
+                        <th>Total Marks</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Math</td>
+                        <td>85</td>
+                        <td>100</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Science</td>
+                        <td>78</td>
+                        <td>100</td>
+                        <td>B+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Fees Payment -->
+        <div id="fees" class="page-content hidden">
+            <h2>Fees Payment</h2>
+            <p>View and pay your fees here:</p>
+            <!-- Example Fees Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Fee Type</th>
+                        <th>Amount Due</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tuition Fee</td>
+                        <td>$500</td>
+                        <td>2024-01-15</td>
+                        <td>Pending</td>
+                        <td><button class="btn btn-success btn-sm">Pay Now</button></td>
+                    </tr>
+                    <tr>
+                        <td>Library Fee</td>
+                        <td>$50</td>
+                        <td>2024-01-10</td>
+                        <td>Paid</td>
+                        <td><button class="btn btn-secondary btn-sm" disabled>Paid</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Apply Leave -->
+        <div id="leave" class="page-content hidden">
+            <h2>Apply Leave</h2>
+            <p>Fill the form below to apply for leave:</p>
+            <!-- Example Leave Form -->
+            <form>
+                <div class="form-group">
+                    <label for="leaveType">Leave Type:</label>
+                    <select class="form-control" id="leaveType">
+                        <option>Personal Leave</option>
+                        <option>Sick Leave</option>
+                        <option>Casual Leave</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leaveDate">Leave Date:</label>
+                    <input type="date" class="form-control" id="leaveDate">
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Leave:</label>
+                    <textarea class="form-control" id="reason" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Leave</button>
+            </form>
+        </div>
+
+        <!-- Send Feedback -->
+        <div id="feedback" class="page-content hidden">
+            <h2>Send Feedback</h2>
+            <p>Share your feedback with us:</p>
+            <!-- Example Feedback Form -->
+            <form>
+                <div class="form-group">
+                    <label for="feedbackMessage">Your Feedback:</label>
+                    <textarea class="form-control" id="feedbackMessage" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showContent(pageId) {
+            // Hide all content sections
+            document.querySelectorAll('.page-content').forEach(function(section) {
+                section.classList.add('hidden');
+            });
+
+            // Remove active class from all links
+            document.querySelectorAll('.menu-link').forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // Show the selected content
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // Highlight the clicked link
+            event.target.classList.add('active');
+        }
+
+        // Toggle sidebar for small screens
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        }
+    </script><script>
+        function showContent(pageId) {
+            // Hide all content sections
+            document.querySelectorAll('.page-content').forEach(function(section) {
+                section.classList.add('hidden');
+            });
+
+            // Remove active class from all links
+            document.querySelectorAll('.menu-link').forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // Show the selected content
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // Highlight the clicked link
+            event.target.classList.add('active');
+        }
+
+        // Toggle sidebar for small screens
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>

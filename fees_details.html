@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fees_detail.css">
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        button {
+    padding: 8px 16px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+button.edit-btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+button.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.delete-btn:hover {
+    background-color: #a71d2a;
+    color: #fff;
+}
+
+button.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+button.save-btn:hover {
+    background-color: #1e7e34;
+    color: #fff;
+}
+
+button.cancel-btn {
+    background-color: #ffc107;
+    color: black;
+}
+
+button.cancel-btn:hover {
+    background-color: #e0a800;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>COLLEGE NAME</h2>
+        <ul>
+            <li><a href="admin.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="managestaff.html"><i class="fas fa-users"></i> Manage Staff</a></li>
+            <li><a href="addstaff.html"><i class="fas fa-user-plus"></i> Add Staff</a></li>
+            <li><a href="m_student.html"><i class="fas fa-user-friends"></i> Manage Student</a></li>
+            <li><a href="student.html"><i class="fas fa-user-plus"></i> Add Student</a></li>
+            <li><a href="managecourse.html"><i class="fas fa-book"></i> Manage Course</a></li>
+            <li><a href="course.html"><i class="fas fa-plus-square"></i> Add Course</a></li>
+            <li><a href="m_subject.html"><i class="fas fa-book-open"></i> Manage Subject</a></li>
+            <li><a href="add_subject.html"><i class="fas fa-plus-square"></i> Add Subject</a></li>
+            <li><a href="session.html"><i class="fas fa-calendar"></i> Manage Session</a></li>
+            <li><a href="add_session.html"><i class="fas fa-calendar-plus"></i> Add Session</a></li>
+            <li><a href="Attendance_Tracker.html"><i class="fas fa-eye"></i> Take Attendance </a></li>
+            <li><a href="attendance.html"><i class="fas fa-eye"></i> View Attendance</a></li>
+            <li><a href="fees_details.html" class="active"><i class="fas fa-coins"></i> Fees</a></li>
+            <li><a href="student_leave.html"><i class="fas fa-calendar-check"></i> Student Leave</a></li>
+            <li><a href="staff_leave.html"><i class="fas fa-calendar-times"></i> Staff Leave</a></li>
+            <li><a href="student_feedback.html"><i class="fas fa-comments"></i> Student Feedback</a></li>
+            <li><a href="staff_feedback.html"><i class="fas fa-comments"></i> Staff Feedback</a></li>
+        </ul>
+        <!-- Logout Button -->
+        <button class="logout-btn" onclick="window.location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+         <!-- Header Section -->
+         <div class="header">
+            <h2 class="admin_name">WELCOME Yuvaraja</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+
+    <!-- Fees by Department Page -->
+<div id="feesDepartment" class="page-content hidden">
+    <h2>Department-wise Fees Details</h2>
+    <p>View fees collection and pending details for each department.</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Student Name</th>
+                <th>Fee Type</th>
+                <th>Amount Paid</th>
+                <th>Amount Pending</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Computer Science</td>
+                <td>John Doe</td>
+                <td>Tuition Fee</td>
+                <td>$1000</td>
+                <td>$500</td>
+                <td>2024-01-15</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>Computer Science</td>
+                <td>Michael</td>
+                <td>Library Fee</td>
+                <td>$0</td>
+                <td>$50</td>
+                <td>2024-01-10</td>
+                <td>Paid</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>Jane Smith</td>
+                <td>Library Fee</td>
+                <td>$50</td>
+                <td>$0</td>
+                <td>2024-01-10</td>
+                <td>Paid</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const tableBody = document.querySelector("#feesDepartment .table tbody");
+
+    // Function to enable editing of a row
+    function editRow(row) {
+        const cells = row.querySelectorAll("td:not(:last-child)"); // Exclude action buttons
+        cells.forEach(cell => {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = cell.textContent.trim();
+            cell.textContent = ""; // Clear cell content
+            cell.appendChild(input); // Add input for editing
+        });
+
+        // Update action buttons
+        const actionsCell = row.querySelector("td:last-child");
+        actionsCell.innerHTML = `
+            <button class="save-btn">Save</button>
+            <button class="cancel-btn">Cancel</button>
+        `;
+
+        actionsCell.querySelector(".save-btn").addEventListener("click", () => saveRow(row));
+        actionsCell.querySelector(".cancel-btn").addEventListener("click", () => cancelEdit(row));
+    }
+
+    // Function to save edited row
+    function saveRow(row) {
+        const cells = row.querySelectorAll("td:not(:last-child)");
+        cells.forEach(cell => {
+            const input = cell.querySelector("input");
+            if (input) {
+                cell.textContent = input.value.trim(); // Save edited value
+            }
+        });
+
+        updateActionButtons(row);
+    }
+
+    // Function to cancel editing
+    function cancelEdit(row) {
+        const cells = row.querySelectorAll("td:not(:last-child)");
+        cells.forEach(cell => {
+            const input = cell.querySelector("input");
+            if (input) {
+                cell.textContent = input.defaultValue; // Revert to original value
+            }
+        });
+
+        updateActionButtons(row);
+    }
+
+    // Function to delete a row
+    function deleteRow(row) {
+        row.remove(); // Remove the row from the table
+    }
+
+    // Function to update action buttons
+    function updateActionButtons(row) {
+        const actionsCell = row.querySelector("td:last-child");
+        actionsCell.innerHTML = `
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        `;
+
+        actionsCell.querySelector(".edit-btn").addEventListener("click", () => editRow(row));
+        actionsCell.querySelector(".delete-btn").addEventListener("click", () => deleteRow(row));
+    }
+
+    // Initialize action buttons for existing rows
+    tableBody.querySelectorAll("tr").forEach(row => {
+        const actionsCell = document.createElement("td");
+        actionsCell.innerHTML = `
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        `;
+        row.appendChild(actionsCell);
+
+        actionsCell.querySelector(".edit-btn").addEventListener("click", () => editRow(row));
+        actionsCell.querySelector(".delete-btn").addEventListener("click", () => deleteRow(row));
+    });
+});
+
+</script>
+
+</body>
+</html>
+
+

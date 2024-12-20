@@ -1,0 +1,65 @@
+/* Fees by Department Page Styles */
+#feesDepartment {
+    background-color: #ffffff; /* White background for content */
+    border-radius: 8px; /* Rounded corners for the section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Space around the content */
+    margin: 20px; /* Space around the entire section */
+}
+
+#feesDepartment h2 {
+    font-size: 24px; /* Larger font for the heading */
+    color: #333; /* Dark text for readability */
+    margin-bottom: 10px; /* Space below the heading */
+    text-align: center; /* Center-align heading */
+}
+
+#feesDepartment p {
+    font-size: 16px; /* Slightly larger text for description */
+    color: #555; /* Neutral color for text */
+    margin-bottom: 20px; /* Space below the description */
+    text-align: center; /* Center-align paragraph */
+}
+
+/* Table Styles */
+#feesDepartment .table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Remove space between borders */
+    margin-top: 10px; /* Space above the table */
+}
+
+#feesDepartment .table th,
+#feesDepartment .table td {
+    padding: 12px; /* Padding inside cells */
+    text-align: center; /* Center text inside cells */
+    border: 1px solid #ddd; /* Light gray border */
+    font-size: 14px; /* Font size for table content */
+}
+
+#feesDepartment .table th {
+    background-color: #3c8dbc; /* Light gray background for headers */
+    color: #333; /* Dark text for headers */
+    font-weight: bold; /* Bold text for headers */
+}
+
+#feesDepartment .table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternating row color for even rows */
+}
+
+#feesDepartment .table tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Status Column Colors */
+#feesDepartment .table td:last-child {
+    font-weight: bold; /* Make the status bold */
+}
+
+#feesDepartment .table td:last-child:contains('Pending') {
+    color: #e74c3c; /* Red for pending status */
+}
+
+#feesDepartment .table td:last-child:contains('Paid') {
+    color: #2ecc71; /* Green for paid status */
+}
+

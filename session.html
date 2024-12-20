@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>MANAGE SESSION</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .buttons button,
+        .buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            text-decoration: none;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filter-section select {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .search-button,
+        .clear-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+     <!-- Sidebar -->
+     <div class="sidebar">
+        <h2>COLLEGE NAME</h2>
+        <ul>
+            <li><a href="admin.html" ><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="managestaff.html"><i class="fas fa-users"></i> Manage Staff</a></li>
+            <li><a href="addstaff.html"><i class="fas fa-user-plus"></i> Add Staff</a></li>
+            <li><a href="m_student.html"><i class="fas fa-user-friends"></i> Manage Student</a></li>
+            <li><a href="student.html"><i class="fas fa-user-plus"></i> Add Student</a></li>
+            <li><a href="managecourse.html"><i class="fas fa-book"></i> Manage Course</a></li>
+            <li><a href="course.html"><i class="fas fa-plus-square"></i> Add Course</a></li>
+            <li><a href="m_subject.html"><i class="fas fa-book-open"></i> Manage Subject</a></li>
+            <li><a href="add_subject.html"><i class="fas fa-plus-square"></i> Add Subject</a></li>
+            <li><a href="session.html" class="active"><i class="fas fa-calendar"></i> Manage Session</a></li>
+            <li><a href="add_session.html"><i class="fas fa-calendar-plus"></i> Add Session</a></li>
+            <li><a href="Attendance_Tracker.html"><i class="fas fa-eye"></i> Take Attendance </a></li>
+            <li><a href="attendance.html"><i class="fas fa-eye"></i> View Attendance</a></li>
+            <li><a href="fees_details.html"><i class="fas fa-coins"></i> Fees</a></li>
+            <li><a href="student_leave.html"><i class="fas fa-calendar-check"></i> Student Leave</a></li>
+            <li><a href="staff_leave.html"><i class="fas fa-calendar-times"></i> Staff Leave</a></li>
+            <li><a href="student_feedback.html"><i class="fas fa-comments"></i> Student Feedback</a></li>
+            <li><a href="staff_feedback.html"><i class="fas fa-comments"></i> Staff Feedback</a></li>
+        </ul>
+        <!-- Logout Button -->
+        <button class="logout-btn" onclick="window.location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content1">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+         <!-- Header Section -->
+         <div class="header">
+            <h2 class="admin_name">WELCOME Yuvaraja</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+    <div class="container">
+        <h1>MANAGE SESSION</h1>
+        <div class="buttons">
+            <a href="#">Documentation</a>
+            <a href="#">FAQs</a>
+        </div>
+
+        <div class="filter-section">
+            <label for="CLASS">CLASS</label>
+            <select id="CLASS">
+                <option value="">Select options</option>
+                <option value="1">CLASS 1</option>
+                <option value="2">CLASS 2</option>
+                <option value="3">CLASS 3</option>
+                <option value="4">CLASS 4</option>
+                <option value="5">CLASS 5</option>
+                <option value="6">CLASS 6</option>
+                <option value="7">CLASS 7</option>
+                <option value="8">CLASS 8</option>
+                <option value="9">CLASS 9</option>
+                
+                
+            </select>
+
+            <label for="SECTION">SECTION</label>
+            <select id="SECTION">
+                <option value="">Select options</option>
+                <option value="A">A</option>     
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+
+            <button class="search-button" onclick="filterTable()">Search</button>
+            <button class="clear-button" onclick="clearFilter()">Clear</button>
+        </div>
+
+        <div class="table-container">
+            <table id="subjectTable">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Class</th>
+                        <th>Session Timing</th>
+                        <th>Allocated Teacher</th>
+                        <th>Credits</th>
+                        <th>Recurring Fee</th>
+                        <th>Passing Marks</th>
+                        <th>Total Marks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Example Data
+        const subjectsData = {
+            "1": {
+                "A": [
+                    { subject: "English", teacher: "Mr. Smith", credits: 3 },
+                    { subject: "Math", teacher: "Ms. Johnson", credits: 4 },
+                    { subject: "Science", teacher: "Mr. Lee", credits: 4 },
+                    { subject: "History", teacher: "Ms. Davis", credits: 2 },
+                    { subject: "Geography", teacher: "Mr. Brown", credits: 2 },
+                ],
+                "B": [
+                    { subject: "English", teacher: "Ms. Taylor", credits: 3 },
+                    { subject: "Math", teacher: "Mr. Anderson", credits: 4 },
+                    { subject: "Science", teacher: "Ms. Clark", credits: 4 },
+                    { subject: "History", teacher: "Mr. Wright", credits: 2 },
+                    { subject: "Geography", teacher: "Ms. Scott", credits: 2 },
+                ],
+            },
+            "2": {
+                "A": [
+                    { subject: "Physics", teacher: "Mr. Clark", credits: 3 },
+                    { subject: "Chemistry", teacher: "Ms. Johnson", credits: 4 },
+                    { subject: "Biology", teacher: "Mr. Smith", credits: 4 },
+                ],
+                "C": [
+                    { subject: "Math", teacher: "Ms. Taylor", credits: 3 },
+                    { subject: "English", teacher: "Mr. Wright", credits: 2 },
+                ],
+            },
+        };
+    
+        function filterTable() {
+            const classValue = document.getElementById("CLASS").value;
+            const sectionValue = document.getElementById("SECTION").value;
+    
+            const tableBody = document.getElementById("subjectTable").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = ""; // Clear existing rows
+    
+            // Validate input
+            if (!classValue || !sectionValue) {
+                alert("Please select both Class and Section.");
+                return;
+            }
+    
+            const selectedData = subjectsData[classValue]?.[sectionValue];
+            if (selectedData && selectedData.length > 0) {
+                selectedData.forEach((subject, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${subject.subject}</td>
+                        <td>Class ${classValue}</td>
+                        <td>1pm - 2pm</td>
+                        <td>${subject.teacher}</td>
+                        <td>${subject.credits}</td>
+                        <td>${subject.credits * 10}</td>
+                        <td>33</td>
+                        <td>100</td>
+                        <td>
+                            <button onclick="editRow(this)">Edit</button>
+                            <button onclick="deleteRow(this)">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } else {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td colspan="9" style="text-align: center;">No data available for the selected class and section.</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+    
+        function clearFilter() {
+            document.getElementById("CLASS").value = "";
+            document.getElementById("SECTION").value = "";
+            const tableBody = document.getElementById("subjectTable").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = ""; // Clear table
+        }
+    
+        function editRow(button) {
+            const row = button.parentNode.parentNode;
+            const cells = row.querySelectorAll("td");
+            cells.forEach((cell, index) => {
+                if (index < cells.length - 1) {
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.value = cell.innerText;
+                    cell.innerHTML = "";
+                    cell.appendChild(input);
+                }
+            });
+            button.innerText = "Save";
+            button.onclick = function () {
+                saveRow(button);
+            };
+        }
+    
+        function saveRow(button) {
+            const row = button.parentNode.parentNode;
+            const cells = row.querySelectorAll("td");
+            cells.forEach((cell, index) => {
+                if (index < cells.length - 1) {
+                    const input = cell.querySelector("input");
+                    cell.innerText = input.value;
+                }
+            });
+            button.innerText = "Edit";
+            button.onclick = function () {
+                editRow(button);
+            };
+        }
+    
+        function deleteRow(button) {
+            const row = button.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+    
+</body>
+</html>

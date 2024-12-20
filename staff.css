@@ -1,0 +1,206 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    background-color: #3c8dbc;
+    color: #fff;
+    padding: 20px 10px;
+}
+.sidebar h4 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+}
+.sidebar a:hover {
+    background: #357ca5;
+}
+.sidebar i {
+    margin-right: 10px;
+}
+
+/* Main Content */
+.content {
+    margin-left: 0px;
+    padding: 20px;
+    text-align: center;
+}
+.page-content {
+    display: none;
+}
+
+/* Form Styling */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+button[type="submit"] {
+    background-color: #3c8dbc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #357ca5;
+}
+
+/* Stats Cards */
+.stats-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.stats-card h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.stats-card h5 {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+.table th {
+    background-color: #3c8dbc;
+    color: #fff;
+}
+.table td {
+    background-color: #f9f9f9;
+}
+
+/* Initially show the first page content */
+.page-content.show {
+    display: block;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto;
+        width: 100%;
+        position: relative;
+        padding: 10px;
+    }
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+    .stats-card {
+        margin-bottom: 20px;
+    }
+    .col-md-3 {
+        width: 100%;
+    }
+    .chart-container {
+        margin-top: 20px;
+    }
+}
+/* Container for the row of stats */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; /* To counteract the padding of the columns */
+}
+
+/* Stats Card Styling */
+.stats-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Fixed height for all stats cards */
+}
+
+.stats-card:hover {
+    transform: translateY(-10px); /* Hover effect for cards */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Stats Card Icon Styling */
+.stats-card i {
+    font-size: 3rem; /* Adjust icon size */
+    color: #3c8dbc; /* Icon color */
+    margin-bottom: 15px;
+}
+
+/* Stats Card Text */
+.stats-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stats-card h5 {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Column Width and Margin */
+.col-md-3 {
+    padding: 0 15px; /* Add padding between columns */
+    margin-bottom: 20px;
+    flex: 1 0 23%; /* Flexbox to allow for responsive resizing */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .col-md-3 {
+        flex: 1 0 46%; /* Two cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .col-md-3 {
+        flex: 1 0 100%; /* One card per row on very small screens */
+    }
+}

@@ -1,0 +1,80 @@
+
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            text-align: center;
+            color: #6a11cb;
+            margin-bottom: 20px;
+        }
+        .btn-submit {
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+        }
+        .btn-submit:hover {
+            background-color: #2575fc;
+        }
+
+        /* Popup Modal Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h4 {
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+
+        .modal-buttons button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-confirm {
+            background-color: #6a11cb;
+            color: white;
+        }
+        .btn-cancel {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background-color: #2575fc;
+        }
+        .btn-cancel:hover {
+            background-color: #c0392b;
+        }
+
+        

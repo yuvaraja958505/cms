@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="staff.css">
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Staff Dashboard</h4>
+        <a href="#" onclick="showContent('home')"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="showContent('attendance')"><i class="fas fa-clipboard-list"></i> Take Attendance</a>
+        <a href="#" onclick="showContent('viewAttendance')"><i class="fas fa-eye"></i> View Attendance</a>
+        <a href="#" onclick="showContent('result')"><i class="fas fa-chart-line"></i> Add Result</a>
+        <a href="#" onclick="showContent('leave')"><i class="fas fa-calendar-check"></i> Apply Leave</a>
+        <a href="#" onclick="showContent('feedback')"><i class="fas fa-comment-dots"></i>Send Feedback</a>
+    </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+
+        <!-- Header Section -->
+        <div class="header">
+            <h2 class="admin_name">WELCOME Ajai</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Home Page -->
+        <div id="home" class="page-content show">
+            <h2>Welcome to the Staff Dashboard</h2>
+            <!-- <p>Navigate through the sidebar to access your options.</p> -->
+
+            <!-- Row for Summary Cards -->
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>0</h3>
+                        <h5>Students Under Me</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>0</h3>
+                        <h5>Total Attendance Taken</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="fas fa-calendar-minus"></i>
+                        <h3>0</h3>
+                        <h5>Total Leave Taken</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="fas fa-book"></i>
+                        <h3>0</h3>
+                        <h5>Total Subjects</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leave and Subjects Chart -->
+            <!-- <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <h5>Leave Status Chart</h5>
+                        <canvas id="leaveChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <h5>Subjects Attendance Chart</h5>
+                        <canvas id="subjectChart"></canvas>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Attendance Page -->
+        <div id="attendance" class="page-content">
+            <h2>Take Attendance</h2>
+            <p>Here you can mark attendance for your students.</p>
+            <form>
+                <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" class="form-control" id="studentName" placeholder="Enter Student Name">
+                </div>
+                <div class="form-group">
+                    <label for="attendanceStatus">Attendance Status</label>
+                    <select class="form-control" id="attendanceStatus">
+                        <option>Present</option>
+                        <option>Absent</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- View Attendance Page -->
+        <div id="viewAttendance" class="page-content">
+            <h2>View Attendance</h2>
+            <p>Attendance details will be shown here.</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Present</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Absent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Result Page -->
+        <div id="result" class="page-content">
+            <h2>Add Result</h2>
+            <p>Add student results for various subjects.</p>
+            <form>
+                <div class="form-group">
+                    <label for="subjectName">Subject Name</label>
+                    <input type="text" class="form-control" id="subjectName" placeholder="Enter Subject Name">
+                </div>
+                <div class="form-group">
+                    <label for="studentMarks">Marks Obtained</label>
+                    <input type="number" class="form-control" id="studentMarks" placeholder="Enter Marks">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- Apply Leave -->
+        <div id="leave" class="page-content hidden">
+            <h2>Apply Leave</h2>
+            <p>Fill the form below to apply for leave:</p>
+            <!-- Example Leave Form -->
+            <form>
+                <div class="form-group">
+                    <label for="leaveType">Leave Type:</label>
+                    <select class="form-control" id="leaveType">
+                        <option>Personal Leave</option>
+                        <option>Sick Leave</option>
+                        <option>Casual Leave</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leaveDate">Leave Date:</label>
+                    <input type="date" class="form-control" id="leaveDate">
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Leave:</label>
+                    <textarea class="form-control" id="reason" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Leave</button>
+            </form>
+        </div>
+
+        <!-- Feedback Page -->
+        <div id="feedback" class="page-content">
+            <h2>Send Feedback</h2>
+            <p>Provide feedback for the students or the system.</p>
+            <form>
+                <div class="form-group">
+                    <label for="feedbackMessage">Feedback Message</label>
+                    <textarea class="form-control" id="feedbackMessage" rows="3" placeholder="Enter your feedback"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showContent(pageId) {
+            // Hide all content sections by removing the 'show' class
+            document.querySelectorAll('.page-content').forEach(function(section) {
+                section.classList.remove('show');
+            });
+
+            // Show the selected content by adding the 'show' class
+            document.getElementById(pageId).classList.add('show');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showContent('home');
+        });
+
+        // Prevent form submission for demo purposes
+        document.querySelectorAll('form').forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                console.log('Form submitted!');
+            });
+        });
+
+        // Chart Initialization
+        // var ctxLeave = document.getElementById('leaveChart').getContext('2d');
+        // var leaveChart = new Chart(ctxLeave, {
+        //     type: 'pie', 
+        //     data: {
+        //         labels: ['Leave Taken', 'Leave Remaining'],
+        //         datasets: [{
+        //             label: 'Leave Status',
+        //             data: [10, 90], // Sample data
+        //             backgroundColor: ['#FF5733', '#28a745'],
+        //         }]
+        //     }
+        // });
+
+        // var ctxSubjects = document.getElementById('subjectChart').getContext('2d');
+        // var subjectChart = new Chart(ctxSubjects, {
+        //     type: 'bar', 
+        //     data: {
+        //         labels: ['Math', 'Science', 'English'], 
+        //         datasets: [{
+        //             label: 'Subjects Attendance',
+        //             data: [70, 80, 90], // Sample data
+        //             backgroundColor: '#3c8dbc',
+        //         }]
+        //     }
+        // });
+    </script>
+</body>
+</html>

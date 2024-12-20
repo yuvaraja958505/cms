@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Teacher - School Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            /* background-color: #6f42c1; */
+            color: rgb(0, 0, 0);
+            padding: 15px;
+        }
+        .teacher-stats {
+            display: flex;
+            justify-content:left;
+            margin: 20px 0px;
+             
+
+        }
+        .teacher-stats div {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .teacher-table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Sidebar -->
+     <div class="sidebar">
+        <h2>COLLEGE NAME</h2>
+        <ul>
+            <li><a href="admin.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="managestaff.html" class="active"><i class="fas fa-users"></i> Manage Staff</a></li>
+            <li><a href="addstaff.html"><i class="fas fa-user-plus"></i> Add Staff</a></li>
+            <li><a href="m_student.html"><i class="fas fa-user-friends"></i> Manage Student</a></li>
+            <li><a href="student.html"><i class="fas fa-user-plus"></i> Add Student</a></li>
+            <li><a href="managecourse.html"><i class="fas fa-book"></i> Manage Course</a></li>
+            <li><a href="course.html"><i class="fas fa-plus-square"></i> Add Course</a></li>
+            <li><a href="m_subject.html"><i class="fas fa-book-open"></i> Manage Subject</a></li>
+            <li><a href="add_subject.html"><i class="fas fa-plus-square"></i> Add Subject</a></li>
+            <li><a href="session.html"><i class="fas fa-calendar"></i> Manage Session</a></li>
+            <li><a href="add_session.html"><i class="fas fa-calendar-plus"></i> Add Session</a></li>
+            <li><a href="Attendance_Tracker.html"><i class="fas fa-eye"></i> Take Attendance </a></li>
+            <li><a href="attendance.html"><i class="fas fa-eye"></i> View Attendance</a></li>
+            <li><a href="fees_details.html"><i class="fas fa-coins"></i> Fees</a></li>
+            <li><a href="student_leave.html"><i class="fas fa-calendar-check"></i> Student Leave</a></li>
+            <li><a href="staff_leave.html"><i class="fas fa-calendar-times"></i> Staff Leave</a></li>
+            <li><a href="student_feedback.html"><i class="fas fa-comments"></i> Student Feedback</a></li>
+            <li><a href="staff_feedback.html"><i class="fas fa-comments"></i> Staff Feedback</a></li>
+        </ul>
+        <button class="logout-btn" onclick="window.location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+     <!-- Main Content -->
+     <div class="main-content">
+        <header>
+            <h1>College Management System</h1>
+        </header>
+
+        <!-- Header Section -->
+        <div class="header">
+            <h2 class="admin_name">WELCOME Yuvaraja</h2>
+            <div class="icons">
+                <i class="far fa-comment-alt" id="notification-icon"></i>
+                <i class="fas fa-user-circle" id="profile-icon"></i>
+            </div>
+        </div>
+
+        <!-- Notification Popup -->
+        <div class="popup" id="notification-popup">
+            <h3>Notifications</h3>
+            <p>No new notifications.</p>
+        </div>
+
+        <!-- Profile Popup -->
+        <div class="popup" id="profile-popup">
+            <h3>Profile</h3>
+            <img src="./img/IMG_20231019_080331_479.jpg" alt="Profile Picture">
+            <p>Admin Name: Yuvaraja</p>
+            <p>Email: Yuvaraja@example.com</p>
+            <button class="logout-btn">LOG OUT</button>
+        </div>
+
+   
+
+    <!-- Teacher Section -->
+    <div class="container mt-4">
+        <h3>View Teacher</h3>
+        
+        <!-- Teacher Stats -->
+        <div class="teacher-stats row">
+            <div class="col-md-3 bg-success text-white p-2 rounded">
+                <h5>MALE</h5>
+                <p id="maleCount">2</p>
+            </div>
+            <div class="col-md-3 bg-info text-white p-2  rounded">
+                <h5>FEMALE</h5>
+                <p id="femaleCount">2</p>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search by Name or Email">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="teacher-table">
+            <table class="table table-bordered mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Image</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Contact</th>
+                        <th>Last Login</th>
+                        <th>Option</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody id="teacherTableBody">
+                    <!-- Table Rows Dynamically Added Here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- View Details Modal -->
+<div class="modal fade" id="viewDetailsModal" tabindex="-1" aria-labelledby="viewDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewDetailsModalLabel">Teacher Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="detailsContent">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ban Teacher Modal -->
+<div class="modal fade" id="banTeacherModal" tabindex="-1" aria-labelledby="banTeacherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="banTeacherModalLabel">Ban Teacher</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="banContent">
+                <!-- Dynamic Content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Bootstrap & JavaScript -->
+    <script>
+        // Sample Data for Teachers
+        const teachers = [
+            { name: "Teacher One", email: "teacher1@mail.com", gender: "female", contact: "+(000) 0000-000000", lastLogin: "2022-07-31 14:30:05", image: "👩" },
+            { name: "Teacher Two", email: "teacher2@mail.com", gender: "male", contact: "+(000) 0000-000000", lastLogin: "2022-08-02 11:13:56", image: "👨" },
+            { name: "Teacher Three", email: "teacher3@mail.com", gender: "male", contact: "+(000) 0000-000000", lastLogin: "2022-08-02 15:03:43", image: "👨" },
+            { name: "Teacher Four", email: "teacher4@mail.com", gender: "female", contact: "+(000) 0000-000000", lastLogin: "Inactive", image: "👩" }
+        ];
+
+        const tableBody = document.getElementById("teacherTableBody");
+        const searchInput = document.getElementById("searchInput");
+        const maleCount = document.getElementById("maleCount");
+        const femaleCount = document.getElementById("femaleCount");
+
+        // Render Table Data
+        function renderTable(data) {
+            tableBody.innerHTML = "";
+            data.forEach(teacher => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${teacher.image}</td>
+                        <td>${teacher.name}</td>
+                        <td>${teacher.email}</td>
+                        <td>${teacher.gender}</td>
+                        <td>${teacher.contact}</td>
+                        <td>${teacher.lastLogin}</td>
+                       <td>
+    <div class="dropdown">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Action
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" onclick="viewDetails('${teacher.name}', '${teacher.email}', '${teacher.contact}')">View Details</a></li>
+            <li><a class="dropdown-item" href="mailto:${teacher.email}">Send Mail</a></li>
+            <li><a class="dropdown-item text-danger" href="#" onclick="banTeacher('${teacher.name}')">Ban Teacher</a></li>
+        </ul>
+    </div>
+</td>
+
+                    </tr>
+                `;
+            });
+        }
+
+        // Update Gender Counts
+        function updateCounts() {
+            const male = teachers.filter(teacher => teacher.gender === "male").length;
+            const female = teachers.filter(teacher => teacher.gender === "female").length;
+            maleCount.textContent = male;
+            femaleCount.textContent = female;
+        }
+        // View Details Function
+    function viewDetails(name, email, contact,image,gender) {
+        const content = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Image:</strong> ${image}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Gender:</strong> ${gender}</p>
+            <p><strong>Contact:</strong> ${contact}</p>
+        `;
+        document.getElementById("detailsContent").innerHTML = content;
+        new bootstrap.Modal(document.getElementById('viewDetailsModal')).show();
+    }
+     // Ban Teacher Function
+     function banTeacher(name) {
+    const content = `
+        <p>Are you sure you want to <strong>ban</strong> ${name}?</p>
+        <div class="text-center mt-3">
+            <button class="btn btn-danger" id="confirmBanBtn">Yes, Ban</button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        </div>
+    `;
+    document.getElementById("banContent").innerHTML = content;
+
+    // Show the modal
+    const banModal = new bootstrap.Modal(document.getElementById('banTeacherModal'));
+    banModal.show();
+
+    // Add event listener for the "Yes" button
+    setTimeout(() => {
+        document.getElementById("confirmBanBtn").addEventListener("click", () => {
+            alert(`${name} has been banned successfully.`);
+            banModal.hide(); // Hide the modal after confirmation
+        });
+    }, 0);
+}
+
+
+        // Search Functionality
+        searchInput.addEventListener("keyup", () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredData = teachers.filter(teacher => 
+                teacher.name.toLowerCase().includes(searchTerm) ||
+                teacher.email.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filteredData);
+        });
+
+        // Initialize Table & Counts
+        renderTable(teachers);
+        updateCounts();
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+
+    /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    width: 400px;
+    position: relative;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Form Box */
+.form-box {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#login-form {
+    display: block; /* Show login form by default */
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Input Box */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    background: none;
+}
+
+.input-box label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 14px;
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -12px;
+    color: #6a11cb;
+    font-size: 12px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #aaa;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #6a11cb;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #2575fc;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+/* Center-align the options */
+.user-options {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.user-options a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #6a0dad; /* Purple color for links */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.user-options a:hover {
+    color: #1f669e; /* Darker shade on hover */
+    text-decoration: underline;
+}
+
+/* Switch */
+.switch {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.switch a {
+    color: #6a11cb;
+    text-decoration: none;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 420px) {
+    .container {
+        width: 90%;
+    }
+}
+
